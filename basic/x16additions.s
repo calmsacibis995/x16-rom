@@ -963,6 +963,21 @@ tattr:
 
 ;******************************************************************
 ;
+; RGR(<x>)
+; Returns current display output type.
+;
+; Adapted from BASIC_TED/graphic5.src
+;
+;******************************************************************
+rgr:
+	lda VERA_DC_VIDEO
+	clc
+	and #$03        ;fetch lower 2 bits
+	tay
+	jmp sngflt      ;return value (0-3)
+
+;******************************************************************
+;
 ; EDIT [<string filename>]
 ; Opens a file in the X16 text editor
 ;
